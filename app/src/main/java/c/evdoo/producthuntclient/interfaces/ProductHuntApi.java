@@ -12,6 +12,6 @@ public interface ProductHuntApi {
     @GET("/v1/categories/{category}/posts")
     Call<ProductsResponse> getDayPostsByCategory(@Header("Authorization") String token, @Path("category") String category);
 
-    @GET("/v1/topics?search[trending]=true")
+    @GET("/v1/topics?search[trending]=true&per_page=10")
     Call<CategoryResponse> getTrendingTopics(@Header("Authorization") String token);
 }

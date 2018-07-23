@@ -29,12 +29,6 @@ public class App extends Application {
                 .baseUrl(baseUrl)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .client(new OkHttpClient.Builder()
-                        .addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                            @Override
-                            public void log(String message) {
-                                Log.d(TAG, message);
-                            }
-                        }).setLevel(HttpLoggingInterceptor.Level.BODY))
                         .build())
                 .build();
     }

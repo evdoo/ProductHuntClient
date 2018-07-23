@@ -8,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        productsSwipeRefreshLayout.setRefreshing(true);
         App.getApi().getDayPostsByCategory(Constants.TOKEN, currentCategoryId).enqueue(new PostsCallback());
         App.getApi().getTrendingTopics(Constants.TOKEN).enqueue(new CategoriesCallback());
 
@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
             TextView upvotes = (TextView) view.findViewById(R.id.upvotes_text_view);
 
             Product product = products.get(position);
-            Log.wtf("product pic", product.getTumbnail().getUrl());
 
             title.setText(product.getTitle());
             description.setText(product.getDescription());
@@ -193,7 +192,6 @@ public class MainActivity extends AppCompatActivity {
             if (response.isSuccessful() && response.body() != null) {
                 if (response.code() == Constants.RESULT_CODE_OK) {
                     ArrayList<Product> products = new ArrayList<>(response.body().getProducts());
-                    Log.wtf("list", products.toString());
                     ProductsAdapter productsAdapter = new ProductsAdapter(MainActivity.this, products);
                     productsListView.setAdapter(productsAdapter);
                     productsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -207,6 +205,9 @@ public class MainActivity extends AppCompatActivity {
                     });
                     productsSwipeRefreshLayout.setRefreshing(false);
                     toolbar.setTitle(currentCategoryTitle);
+                } else {
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.smth_wrong),
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -236,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
                             toolbar.setTitle(currentCategoryTitle);
                             App.getApi().getDayPostsByCategory(Constants.TOKEN, currentCategoryId).enqueue(new PostsCallback());
                             categoriesDrawerLayout.closeDrawer(Gravity.START);
+                            productsSwipeRefreshLayout.setRefreshing(true);
                         }
                     });
                 }
