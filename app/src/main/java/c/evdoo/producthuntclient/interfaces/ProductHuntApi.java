@@ -14,7 +14,4 @@ public interface ProductHuntApi {
 
     @GET("/v1/topics?search[trending]=true")
     Call<CategoryResponse> getTrendingTopics(@Header("Authorization") String token);
-
-    @GET("/v1/me/feed")
-    Call<ProductsResponse> getTechDayPosts(@Header("Authorization") String token);
 }

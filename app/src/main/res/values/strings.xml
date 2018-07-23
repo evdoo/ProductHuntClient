@@ -2,4 +2,6 @@
     <string name="app_name">ProductHuntClient</string>
 
     <string name="smth_wrong">Извините, что-то пошло не так. Проверьте настройки Интернета</string>
+
+    <string name="get_it">Get It</string>
 </resources>

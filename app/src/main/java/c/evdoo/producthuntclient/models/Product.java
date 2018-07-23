@@ -15,21 +15,21 @@ public class Product implements Serializable {
     @Json(name = "votes_count")
     private int upvotes;
 
-    @Json(name = "image_url")
-    private String tumbnailUrl;
+    @Json(name = "thumbnail")
+    private Thumbnail tumbnail;
 
-    @Json(name = "300px")
-    private String screenshotUrl;
+    @Json(name = "screenshot_url")
+    private Screenshot screenshot;
 
     @Json(name = "redirect_url")
     private String url;
 
-    public Product(String title, String description, int upvotes, String tumbnailUrl, String screenshotUrl, String url) {
+    public Product(String title, String description, int upvotes, Thumbnail tumbnail, Screenshot screenshot, String url) {
         this.title = title;
         this.description = description;
         this.upvotes = upvotes;
-        this.tumbnailUrl = tumbnailUrl;
-        this.screenshotUrl = screenshotUrl;
+        this.tumbnail = tumbnail;
+        this.screenshot = screenshot;
         this.url = url;
     }
 
@@ -45,12 +45,12 @@ public class Product implements Serializable {
         return this.upvotes;
     }
 
-    public String getTumbnailUrl() {
-        return this.tumbnailUrl;
+    public Thumbnail getTumbnail() {
+        return this.tumbnail;
     }
 
-    public String getScreenshotUrl() {
-        return screenshotUrl;
+    public Screenshot getScreenshot() {
+        return screenshot;
     }
 
     public String getUrl() {

@@ -2,21 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="5dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <ImageView
-        android:id="@+id/thumbnail_image_view"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="10dp" />
+        android:id="@+id/screenshot_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -25,6 +31,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@android:color/black"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -47,12 +54,19 @@
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 app:srcCompat="@drawable/baseline_thumb_up_black_18dp" />
-
         </LinearLayout>
+
+        <Button
+            android:id="@+id/get_it_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/get_it" />
     </LinearLayout>
+
 </LinearLayout>
